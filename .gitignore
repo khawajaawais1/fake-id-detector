@@ -1,0 +1,165 @@
+@"
+# ============================================================
+# Python
+# ============================================================
+__pycache__/
+*.py[cod]
+*\$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ============================================================
+# Virtual environments
+# ============================================================
+venv/
+env/
+ENV/
+.venv/
+.env/
+env.bak/
+venv.bak/
+
+# ============================================================
+# Environment variables / secrets
+# ============================================================
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+secrets.yaml
+credentials.json
+
+# ============================================================
+# Jupyter
+# ============================================================
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+profile_default/
+ipython_config.py
+
+# ============================================================
+# IDE / Editors
+# ============================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# ============================================================
+# OS noise
+# ============================================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ============================================================
+# Data — DO NOT COMMIT (too large, regenerable, may contain PII)
+# ============================================================
+data/raw/
+data/processed/
+data/splits/*.csv
+!data/splits/.gitkeep
+data/*.zip
+data/*.tar.gz
+*.csv
+!requirements*.csv
+
+# ============================================================
+# Model artifacts — DO NOT COMMIT (large binaries)
+# ============================================================
+outputs/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.h5
+*.onnx
+*.tflite
+*.pb
+*.safetensors
+models/pretrained/
+
+# ============================================================
+# Logs / experiment tracking
+# ============================================================
+logs/
+*.log
+runs/
+mlruns/
+wandb/
+tensorboard/
+lightning_logs/
+
+# ============================================================
+# Coverage / testing
+# ============================================================
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# ============================================================
+# Documentation builds
+# ============================================================
+docs/_build/
+site/
+
+# ============================================================
+# Streamlit (for the demo later)
+# ============================================================
+.streamlit/secrets.toml
+
+# ============================================================
+# PyInstaller
+# ============================================================
+*.manifest
+*.spec
+
+# ============================================================
+# Other
+# ============================================================
+pip-log.txt
+pip-delete-this-directory.txt
+.python-version
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+"@ | Out-File -Encoding utf8 .gitignore
