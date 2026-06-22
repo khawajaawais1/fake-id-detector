@@ -20,16 +20,20 @@ NORM_STD = [0.229, 0.224, 0.225]
 
 def get_train_transforms(image_size=224):
     return A.Compose([
-        A.LongestMaxSize(max_size=int(image_size * 1.15)),
-        A.PadIfNeeded(min_height=int(image_size * 1.15), min_width=int(image_size * 1.15),
+        A.LongestMaxSize(max_size=int(image_size * 1.1)),
+        A.PadIfNeeded(min_height=int(image_size * 1.1), min_width=int(image_size * 1.1),
                        border_mode=0, fill=255),
         A.RandomCrop(height=image_size, width=image_size),
-        A.Rotate(limit=8, border_mode=0, fill=255, p=0.7),
-        A.RandomBrightnessContrast(brightness_limit=0.15, contrast_limit=0.15, p=0.5),
-        A.HueSaturationValue(hue_shift_limit=5, sat_shift_limit=10, val_shift_limit=5, p=0.4),
-        A.GaussianBlur(blur_limit=(3, 5), p=0.3),
-        A.ImageCompression(quality_range=(60, 95), p=0.4),
-        # Notably absent: HorizontalFlip — would invert text/security marks
+        # Geometric — keep these, they simulate user-capture variation
+        A.Rotate(limit=6, border_mode=0, fill=255, p=0.6),
+        A.Perspective(scale=(0.02, 0.05), p=0.3),
+        # Photometric — softer, preserve fine details
+        A.RandomBrightnessContrast(brightness_limit=0.1, contrast_limit=0.1, p=0.4),
+        A.HueSaturationValue(hue_shift_limit=3, sat_shift_limit=5, val_shift_limit=3, p=0.3),
+        # Quality degradation — much lighter than before
+        A.GaussianBlur(blur_limit=(3, 3), p=0.15),       # was (3,5) at p=0.3
+        A.ImageCompression(quality_range=(80, 95), p=0.3),  # was (60,95) at p=0.4
+        # No flipping — would invert text
         A.Normalize(mean=NORM_MEAN, std=NORM_STD),
         ToTensorV2(),
     ])

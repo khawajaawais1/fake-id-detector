@@ -1,22 +1,22 @@
 project:
-  name: fake-id-detector-baseline
+  name: fake-id-detector-v2
   seed: 42
 data:
   train_csv: data/splits/train.csv
   val_csv: data/splits/val.csv
   test_csv: data/splits/test.csv
-  image_size: 224
+  image_size: 320
   num_workers: 2
 model:
   num_classes: 2
-  freeze_backbone: true
+  freeze_backbone: false
   dropout: 0.3
 training:
-  epochs: 15
-  batch_size: 32
+  epochs: 25
+  batch_size: 24
   lr_head: 1.0e-3
   lr_backbone: 1.0e-4
   weight_decay: 1.0e-4
   use_amp: true
-  early_stop_patience: 4
-  output_dir: outputs/baseline
+  early_stop_patience: 6
+  output_dir: outputs/baseline_v2
